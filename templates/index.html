@@ -17,8 +17,9 @@
       {{ section.content | safe }}
     </div>
   </div>
-  <div class="container">
 
+  <!-- Personal Highlights -->
+  <div class="container">
     <div class="has-text-centered">
       <h1 class="padded-title title is-1"> Personal Highlights </h1>
     </div>
@@ -44,6 +45,53 @@
         {% endif %}
         {% endfor %}
       </div>
+    </div>
+  </div>
+
+  <!-- Recent Posts -->
+  <div class="container">
+    <div class="has-text-centered">
+      <h1 class="padded-title title is-1"> Recent posts </h1>
+    </div>
+    {% set blog_section = get_section(path="blog/_index.md") %}
+    {% set research_section = get_section(path="research/_index.md") %}
+    {% set combined_pages = blog_section.pages | concat(with=research_section.pages) %}
+    {% set recent_posts = combined_pages | sort(attribute='date') | reverse | slice(end=3) %}
+
+    <div class="recent-posts">
+      {% for page in recent_posts %}
+        <article class="box">
+          <h2 class="title">
+            <a class="has-text-dark" href='{{ page.permalink }}'>
+              {{ page.title }}
+            </a>
+          </h2>
+          <p class="subtitle">{{ page.description }}</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              {{ macros::page_publish_metadata(page=page) }}
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              {{ macros::page_content_metadata(page=page) }}
+            </div>
+          </div>
+          <div class="content mt-2">
+            {{ page.summary | truncate(length=360) | safe }}
+          </div>
+          <div class="columns">
+            <div class="column">
+              {% if page.taxonomies.categories %}
+              {{ macros::render_categories(categories=page.taxonomies.categories) }}
+              {% endif %}
+            </div>
+            <div class="column has-text-right-desktop">
+              {% if page.taxonomies.tags %}
+              {{ macros::render_tags(tags=page.taxonomies.tags) }}
+              {% endif %}
+            </div>
+          </div>
+        </article>
+      {% endfor %}
     </div>
   </div>
 </section>
