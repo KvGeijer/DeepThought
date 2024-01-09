@@ -159,8 +159,8 @@ $youtube-dark: findDarkColor($youtube)
 // General colors
 
 $scheme-main: $white !default
-$scheme-main-bis: $white-bis !default
-$scheme-main-ter: $white-ter !default
+$scheme-main-bis: $white-ter !default
+$scheme-main-ter: $grey-lightest !default
 $scheme-invert: $black !default
 $scheme-invert-bis: $black-bis !default
 $scheme-invert-ter: $black-ter !default
@@ -218,7 +218,8 @@ $size-large: $size-4 !default
 
 // Effects
 
-$shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02) !default
+// x-offset, y-offset, blur radius, spread radius (0 -> same size as box)
+$shadow: 0em 0.3em 1em 0.2em rgba($scheme-invert, 0.125), 0 0px 0 1px rgba($scheme-invert, 0.02) !default
 
 // Lists and maps
 $custom-colors: null !default

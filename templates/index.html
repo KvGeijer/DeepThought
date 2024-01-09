@@ -4,8 +4,8 @@
 <section class="section">
   <div class="container">
     <div class="has-text-centered">
-      <h1 class="title is-2">{{ section.title }}</h1>
-      <p class="subtitle is-4">{{ section.description }}</p>
+      <h1 class="title is-1">{{ section.title }}</h1>
+      <p class="subtitle is-3">{{ section.description }}</p>
       {% if config.extra.author.avatar %}
       <figure class="image is-flex is-justify-content-center is-align-items-center">
         <img class="is-rounded" src="{{ config.extra.author.avatar }}" style="max-width: 500px" />
@@ -17,5 +17,36 @@
       {{ section.content | safe }}
     </div>
   </div>
+  <div class="container">
+
+    <div class="has-text-centered">
+      <h1 class="padded-title title is-1"> Personal Highlights </h1>
+    </div>
+
+    <div class="columns is-centered">
+      {% set projects = get_section(path="projects/_index.md") %}
+      {% set pages = projects.pages | sort(attribute='extra.weight') %}
+
+      <!-- First Column -->
+      <div class="column is-6">
+        {% for page in pages %}
+        {% if loop.index % 2 == 1 %}
+          {{ macros::render_project_box(page=page) }}
+        {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Second Column -->
+      <div class="column is-6">
+        {% for page in pages %}
+        {% if loop.index % 2 == 0 %}
+          {{ macros::render_project_box(page=page) }}
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 </section>
 {% endblock %}
+
+

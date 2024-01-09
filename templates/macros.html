@@ -1,3 +1,23 @@
+{% macro render_project_box(page) %}
+<article class="box">
+  <div class="columns is-centered">
+    <a href="{{ page.extra.link }}">
+      <img src="{{ page.extra.image.src }}" alt="{{ page.extra.image.alt }}">
+    </a>
+  </div>
+  <div class="project-description">
+    <h2 class="title">
+      <a class="has-text-dark" href = "{{ page.extra.link }}">
+        {{ page.title }}
+      </a>
+    </h2>
+    <div class="content mt-2">
+      {{ page.content | safe }}
+    </div>
+  </div>
+</article>
+{% endmacro %}
+
 {% macro social_links(social_config) %}
 <p>
   {% if social_config.facebook %}
@@ -150,7 +170,7 @@
     </span>
   </a>
   {% endif %}
-  
+
   {% if social_config.orcid %}
   <a class="has-text-orcid" href="https://orcid.org/{{ social_config.orcid }}" target="_blank">
     <span class="icon is-large" title="ORCiD">
