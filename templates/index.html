@@ -86,7 +86,9 @@
                     </div>
                   </div>
                   <div class="content mt-2">
-                    {{ page.summary | truncate(length=360) | safe }}
+                    {% if page.summary %}
+                      {{ page.summary | truncate(length=360) | safe }}
+                    {% endif %}
                   </div>
                   <div class="columns">
                     <div class="column">
