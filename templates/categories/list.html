@@ -13,7 +13,7 @@
       <p class='subtitle is-4'>{{ terms | length }} categories in total</p>
       <p>
         {% for category in terms %}
-        <a href="{{ get_taxonomy_url(kind='categories', name=category.name) }}" class="mr-4">
+        <a style="display: inline-block;" href="{{ get_taxonomy_url(kind='categories', name=category.name) }}" class="mr-4">
           <span class="icon">
             <i class="fas fa-cube"></i>
           </span>
@@ -21,6 +21,21 @@
         </a>
         {% endfor %}
       </p>
+    </div>
+    <div style="padding-top: 40px;"></div>
+    <div>
+      {%- for term in terms %}
+      <article class="box">
+        <h2 class="title">
+          <a class="has-text-dark" href='{{ term.permalink | safe }}{%- if uglyurls %}index.html{%- endif %}'>
+            {{ term.name }}
+          </a>
+        </h2>
+        {%- for page in term.pages %}
+        <p><a href="{{ page.permalink | safe }}{%- if uglyurls %}index.html{%- endif %}">{{ page.title }}</a>  -  <time datetime="{{ page.date }}">{{ page.date | date(format='%B %d, %Y') }}</time></p>
+        {%- endfor %}
+      </article>
+      {%- endfor %}
     </div>
   </div>
 </section>

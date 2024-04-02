@@ -10,6 +10,27 @@
     <div class="has-text-centered">
       <h1 class="title is-2">{{ section.title }}</h1>
       <p class="subtitle is-4">{{ section.description }}</p>
+      {% if true %}
+      <p class="subtitle is-5"> For page filters, see
+        <a class="has-text-info-dark has-text-weight-semibold" href="{{ config.base_url }}/categories">
+          <span class="icon-text">
+            <span class="icon">
+              <i class="fas fa-cube"></i>
+            </span>
+            <span> Categories </span>
+          </span>
+        </a>
+        and
+        <a class="has-text-info-dark has-text-weight-semibold" href="{{ config.base_url }}/tags">
+          <span class="icon-text">
+            <span class="icon">
+              <i class="fas fa-tag"></i>
+            </span>
+            <span> Tags </span>
+          </span>
+        </a>
+      </p>
+      {% endif %}
     </div>
     <div class="content">
       {{ section.content | safe }}

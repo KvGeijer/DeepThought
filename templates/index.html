@@ -62,9 +62,7 @@
           <h1 class="padded-title title is-1"> Recent posts </h1>
         </div>
         {% set blog_section = get_section(path="blog/_index.md") %}
-        {% set research_section = get_section(path="research/_index.md") %}
-        {% set combined_pages = blog_section.pages | concat(with=research_section.pages) %}
-        {% set recent_posts = combined_pages | sort(attribute='date') | reverse | slice(end=3) %}
+        {% set recent_posts = blog_section.pages | sort(attribute='date') | reverse | slice(end=3) %}
 
         <div class="recent-posts">
           <div class="columns is-centered">
