@@ -7,19 +7,12 @@
 $family-sans-serif: "Jost", sans-serif
 $footer-padding: 1.0rem 2.5rem
 
-// Reinvert to not have them inverted
 @mixin base_dark
+    p.fa-star
+        filter: invert(0.8) hue-rotate(140deg)
     body,
     img,
-    iframe, // embedded youtube videos
-    picture,
-    video,
-    pre
-        filter: invert(1) hue-rotate(180deg)
-
-@mixin base_dark
-    body,
-    img,
+    iframe,
     picture,
     video,
     pre
