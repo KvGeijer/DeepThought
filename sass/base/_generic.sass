@@ -71,6 +71,12 @@ body
   font-weight: $body-weight
   line-height: $body-line-height
 
+  // 80% of the normal size for mobile
+  @include mobile
+    font-weight: $body-weight * 0.80
+    line-height: $body-line-height * 0.80
+    font-size: $body-font-size * 0.80
+
 // Inline
 
 a
