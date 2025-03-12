@@ -8,15 +8,26 @@ $family-sans-serif: "Jost", sans-serif
 $footer-padding: 1.0rem 2.5rem
 
 @mixin base_dark
+    // Restore stars in dark mode
+    i.fa-star
+        filter: brightness(0.4) hue-rotate(-90deg) invert(1)
     p.fa-star
-        filter: invert(0.8) hue-rotate(140deg)
-    body,
+        filter: invert(1) hue-rotate(-90deg)
+    // Apply dark mode to all body
+    body
+        filter: invert(1) hue-rotate(90deg)
+    // Special things for socials icons
+    a.has-text-linkedin
+        filter: hue-rotate(90deg) brightness(1.15)
+    a.has-text-googlescholar,
+    a.has-text-orcid,
+    // Restore colors in image-like things
     img,
     iframe,
     picture,
     video,
     pre
-        filter: invert(1) hue-rotate(180deg)
+        filter: invert(1) hue-rotate(-90deg)
 
 html
     scroll-behavior: smooth
